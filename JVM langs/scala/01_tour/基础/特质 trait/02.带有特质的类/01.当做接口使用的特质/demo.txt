@@ -1,0 +1,21 @@
+trait Logger{
+	def log(msg : String)  //抽象方法
+}
+
+
+class ConsoleLogger extends Logger with Serializable{ //使用extends
+	def log(msg : String):Unit={                      //不需要override关键字
+		println("ConsoleLogger: " + msg)
+	}
+}
+
+
+object LoggerTest{
+	val logger = new ConsoleLogger
+	logger.log("hi")
+}
+
+
+/*输出
+ConsoleLogger：hi
+*/
