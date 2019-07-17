@@ -1,0 +1,35 @@
+zookeeper API与应用场景的说明
+- https://www.cnblogs.com/haippy/category/398525.html
+- https://www.jianshu.com/p/0afb62208833?utm_campaign=maleskine&utm_content=note&utm_medium=seo_notes&utm_source=recommendation
+
+
+***********
+** 实例 ***
+***********************
+zookeeper实现分布式高级应用的例子
+- https://www.jianshu.com/u/e94a2d9331d2
+
+zookeeper API实例
+- https://www.jianshu.com/p/86c446e92efc
+
+负载均衡实现实例
+- https://blog.csdn.net/qq_40241957/article/details/82930310
+
+
+
+***************
+** 安装配置 ***
+***********************
+
+windows伪集群安装配置
+- https://blog.csdn.net/awu_scanner/article/details/53694412
+
+
+
+***************
+** 面试题   ***
+***********************
+
+- https://www.jianshu.com/p/f4895e87e50c
+- https://segmentfault.com/a/1190000014479433
+- https://www.cnblogs.com/lanqiu5ge/p/9405601.html
