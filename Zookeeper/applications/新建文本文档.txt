@@ -2,44 +2,95 @@ zookeeper是一个分布式服务框架，是Apache Hadoop的一个子项目。
 
 zookeeper作为一个分布式协调系统提供了一项基本服务：分布式锁服务。分布式锁是分布式协调技术实现的核心内容。像配置管理、任务分发、组服务、分布式消息队列、分布式通知/协调等，这些应用实际上都是基于分布式锁这项基础服务由用户自己摸索出来的。
 
-主要用来解决分布式应用中经常遇到的一些数据管理问题，如：
-* 统一命名服务
-* 状态同步服务
-* 集群管理
-* 分布式应用配置项的管理
+《从Paxos到Zookeeper分布式一致性原理与实践》
 
-zookeeper在大数据领域的几个常见的应用场景：
-------------------------------------------------
-. HDFS/YARN
-  HA（分布式锁的应用）：Master挂掉之后迅速切换到slave节点。
-. HBase
-  HA (分布式锁的应用)：Master挂掉之后迅速切换到slave节点。
-  配置管理：client需要读写HBase的数据首先都是连到ZK读取root表，获得meta表所在的region，最后找到数据所在位置。
-  任务发布：regionserver挂了一台，master需要重新分配region，会把任务放在zookeeper等regionserver来获取
-. Kafka
-  配置管理：broker会在zookeeper注册并保持相关的元数据（topic, partition信息等）更新
-  任务分配 : 给topic分配partitions和replication
+- 初始ZooKeeper
+- ZooKeeper的ZAB协议
+- ZAB与Paxos算法的联系与区别
+- ZooKeeper之搭建集群模式
+- ZooKeeper之搭建单机模式
+- ZooKeeper之搭建伪集群模式
+- ZooKeeper之启动、停止服务
+- ZooKeeper异常之端口被占用
+- ZooKeeper异常之磁盘没有剩余空间
+- ZooKeeper异常之无法找到myid文件
+- ZooKeeper异常之集群中其他机器Leader选举端口未开
+- 如何使用客户端对ZooKeeper进行操作
+- ZooKeeper之Java客户端API使用 —— 创建会话
+- ZooKeeper之Java客户端API使用 —— 创建节点
+- ZooKeeper之Java客户端API使用 —— 删除节点
+- ZooKeeper之Java客户端API使用 —— 读取数据
+- ZooKeeper之Java客户端API使用 —— 更新数据
+- ZooKeeper之Java客户端API使用 —— 检测节点是否存在
+- ZooKeeper之Java客户端API使用 —— 权限控制
+- ZkClient之Maven依赖和创建会话
+- ZkClient之创建节点
+- ZkClient之删除节点、更新节点、检测节点是否存在
+- ZkClient之读取数据
+- Curator之Maven依赖、创建会话
+- Curator之创建节点
+- Curator之删除节点
+- Curator之读取数据
+- Curator之更新数据
+- Curator之异步接口
+- Curator典型使用场景之事件监听
+- Curator典型使用场景之Master选举
+- Curator典型使用场景之分布式锁
+- Curator典型使用场景之分布式计数器
+- Curator典型使用场景之分布式Barrier
+- Curator工具类值ZKPaths
+- Curator工具类之EnsurePath
+- Curator工具类之TestingServer
+- Curator工具类之TestingCluster
+- ZooKeeper的典型应用场景之负载均衡
+- ZooKeeper的典型应用场景之命名空间
+- ZooKeeper的典型应用场景之分布式协调/通知
+- ZooKeeper的典型应用场景之集群管理
+- ZooKeeper的典型应用场景之Master选举
+- ZooKeeper的典型应用场景之分布式锁
+- ZooKeeper的典型应用场景之分布式队列
+- ZooKeeper在大型分布式系统中的应用之Hadoop
+- ZooKeeper在大型分布式系统中的应用之HBase
+- ZooKeeper在大型分布式系统中的应用之Kafka
+- ZooKeeper系统模型之数据模型
+- ZooKeeper系统模型之节点特性
+- ZooKeeper系统模型之版本 —— 保证分布式数据原子性操作
+- ZooKeeper系统模型之Watcher —— 数据变更的通知（接口、事件、回调方法）
+- ZooKeeper系统模型之Watcher —— 数据变更的通知（工作机制）
+- ZooKeeper系统模型之Watcher特性总结
+- ZooKeeper系统模型之ACL
+- ZooKeeper系统模型之序列化
+- ZooKeeper系统模型之通信协议
+- ZooKeeper客户端
+- ZooKeeper之一次会话的创建过程
+- ZooKeeper之服务器地址列表
+- ZooKeeper系统模型之ClientCnxn: 网络I/O
+- ZooKeeper系统模型之会话状态
+- ZooKeeper系统模型之会话创建
+- ZooKeeper系统模型之会话管理
+- ZooKeeper系统模型之会话清理
+- ZooKeeper系统模型之会话重连
+- ZooKeeper系统模型之单机版服务器启动过程
+- ZooKeeper系统模型之集群版服务器启动过程
+- ZooKeeper系统模型之Leader选举概述
+- ZooKeeper系统模型之Leader选举算法分析
+- ZooKeeper系统模型之Leader选举的实现细节
+- ZooKeeper系统模型之Leader服务器
+- ZooKeeper系统模型之Follower服务器
+- ZooKeeper系统模型之Observer服务器
+- ZooKeeper系统模型之集群间消息通信
+- ZooKeeper系统模型之SetData请求
+- ZooKeeper系统模型之事务请求转发
+- ZooKeeper系统模型之GetData请求
+- ZooKeeper系统模型之内存数据
+- ZooKeeper系统模型之事务日志
+- ZooKeeper系统模型之snapshot —— 数据快照
+- ZooKeeper系统模型之数据初始化
+- ZooKeeper系统模型之数据同步
+- ZooKeeper基本配置参数
+- ZooKeeper高级配置参数
+- ZooKeeper四字命令
+- ZooKeeper实时监控
+- ZooKeeper构建一个高可用的集群
 
-zookeeper = 文件系统 + 监听通知机制
-
-文件系统
-=============
-zookeeper维护一个类似文件系统的数据结构。每个目录项都被称作为znode(目录节点)，我们能够自由的增加、删除znode，在一个znode下增加、删除子znode。唯一与文件系统的不同在于znode是可以存储数据的。
-
-zookeeper命名空间中的znode，兼具文件和目录两种特点。既像文件一样维护者数据、元信息、ACL、时间戳等数据结构，又像目录一样可以作为路径标识的一部分。每个znode由3部分组成：
-
-
-四种类型的znode:
-  PERSISTENT            -- 持久化目录节点
-                           客户端与zookeeper断开连接后，该节点依旧存在
-  PERSISTENT_SEQUENTIAL -- 持久化顺序编号目录节点
-                           客户端与zookeeper断开连接后，该节点依旧存在，只是zookeeper给该节点名称进行顺序编号
-  EPHEMERAL             -- 临时目录节点
-                           客户端与zookeeper断开连接后，该节点被删除
-  EPHEMERAL_SEQUENTIAL  -- 临时顺序编号目录节点
-                           客户端与zookeeper断开连接后，该节点被删除，只是zookeeper给该节点名称进行顺序编号
-
-
-监听通知机制
-=================
-客户端注册监听它关心的目录节点，当目录节点发生变化（数据改变、被删除、子目录节点增加删除）时，zookeeper会通知客户端。                           
+https://blog.csdn.net/en_joker/article/category/7233326/1?
