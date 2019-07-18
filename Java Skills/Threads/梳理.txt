@@ -1,0 +1,23 @@
+《Java核心（五）深入理解BIO、NIO、AIO（原）》
+   https://my.oschina.net/u/3471412/blog/2966696
+
+《Java基础—线程》
+   https://www.cnblogs.com/jiangbei/p/6664555.html
+
+《Java多线程》标签
+   https://www.cnblogs.com/linjiqin/tag/java%20%E5%A4%9A%E7%BA%BF%E7%A8%8B/
+
+《Java多线程并发》
+   https://www.cnblogs.com/zch-lxh1314/p/7090653.html
+
+《在多核或多处理器时代，为什么要特别 重视 Java 多线程 开发模式》
+   https://blog.csdn.net/zolalad/article/details/25336369
+
+《java高并发设计》系列
+   https://my.oschina.net/wangshuaixin?tab=newest&catalogId=340595
+
+《cpu个数、核数、线程数、Java多线程关系综合》
+   https://blog.csdn.net/ohbxiaoxin/article/details/82217498
+
+《Java集合及concurrent并发包总结（转）》
+   https://www.cnblogs.com/cccw/p/5837448.html      
