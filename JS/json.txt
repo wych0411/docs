@@ -1,0 +1,11 @@
+JavaScript中JSON对象和JSON字符串的转换
+
+  JSON是JavaScript的原生格式，这意味着在JavaScript中处理JSON数据不须要任何特殊的API或工具包。
+  JavaScript中的JSON必须使用双引号包含键值。
+
+- 字符串转对象
+  var jsonObject = JSON.parse(jsonstr);
+
+- 对象转字符串
+  var jsonstr = JSON.stringify(jsonObject[, replacer [, space]]);
+  JSON.stringify()方法的可选参数space，可以指定缩进用的空白字符串，用于美化输出(pretty-print)。space参数是个数字，它代表右多少的空格；上限为10.该值若小于1，则意味着没有空格；如果该参数没有提供（或者为null）将没有空格。
