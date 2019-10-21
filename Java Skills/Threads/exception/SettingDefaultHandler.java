@@ -1,10 +1,9 @@
-public class ExceptionThread implements Runnable{
-
-	public void run(){
-		throw new RuntimeException();
-	}
+public class SettingDefaultHandler{
 
 	public static void main(String[] args){
+		Thread.setDefaultUncaughtExceptionHandler(
+			new MyUncaughtExceptionHandler()
+		);
 		ExecutorService executorService = Executors.newCachedThreadPool();
 		executorService.execute(new ExceptionThread());
 	}
