@@ -84,5 +84,67 @@ class PrioritizedTaskProducer implements Runnable{
 
 	private ExecutorService exec;
 
-	public PrioritizedTaskProducer()
+	public PrioritizedTaskProducer(Queue<Runnable> q, ExecutorService e){
+		queue = q;
+		exec = e; // Used for EndSentinel
+	}
+
+	public void run(){
+
+		// Unbounded queue; never blocks.
+		// Fill it up fast with random priorities:
+		for(int i=0; i<20; i++){
+			queue.add(new PrioritizedTask(rand.nextInt(10)));
+			Thread.yield();
+		}
+
+		// Trickle in highest-priority jobs:
+		try{
+
+			for(int i=0; i<10; i++){
+				TimeUnit.MILLISECONDS.sleep(250);
+				queue.add(new PrioritizedTask(10));
+			}
+
+			// Add jobs, lowest priority first:
+			for(int i=0; i<10; i++){
+				queue.add(new PrioritizedTask(i));
+			}
+
+			// A sentinel to stop all the tasks:
+			queue.add(new PrioritizedTask.EndSentinel(exec));
+
+		}catch(InterruptedException e){
+			// Acceptable way to exit
+		}
+
+		print("Finished PrioritizedTaskProducer");
+	}
+
+}
+
+class PrioritizedTaskConsumer implements Runnable{
+
+	private PriorityBlockingQueue<Runnable> q;
+
+	public PrioritizedTaskConsumer(PriorityBlockingQueue<Runnable> q){
+		this.q = q;
+	}
+
+	public void run(){
+
+		try{
+
+			while(!Thread.interrupted()){
+				// Use current thread to run the task:
+				q.take().run();
+			}
+
+		}catch(InterruptedException e){
+			// Acceptable way to exit
+		}
+
+		print("Finished PrioritizedTaskConsumer");
+	}
+	
 }
