@@ -2,6 +2,49 @@ zookeeper是一个分布式服务框架，是Apache Hadoop的一个子项目。
 
 zookeeper作为一个分布式协调系统提供了一项基本服务：分布式锁服务。分布式锁是分布式协调技术实现的核心内容。像配置管理、任务分发、组服务、分布式消息队列、分布式通知/协调等，这些应用实际上都是基于分布式锁这项基础服务由用户自己摸索出来的。
 
+主要用来解决分布式应用中经常遇到的一些数据管理问题，如：
+* 统一命名服务
+* 状态同步服务
+* 集群管理
+* 分布式应用配置项的管理
+
+zookeeper在大数据领域的几个常见的应用场景：
+------------------------------------------------
+. HDFS/YARN
+  HA（分布式锁的应用）：Master挂掉之后迅速切换到slave节点。
+. HBase
+  HA (分布式锁的应用)：Master挂掉之后迅速切换到slave节点。
+  配置管理：client需要读写HBase的数据首先都是连到ZK读取root表，获得meta表所在的region，最后找到数据所在位置。
+  任务发布：regionserver挂了一台，master需要重新分配region，会把任务放在zookeeper等regionserver来获取
+. Kafka
+  配置管理：broker会在zookeeper注册并保持相关的元数据（topic, partition信息等）更新
+  任务分配 : 给topic分配partitions和replication
+
+zookeeper = 文件系统 + 监听通知机制
+
+文件系统
+=============
+zookeeper维护一个类似文件系统的数据结构。每个目录项都被称作为znode(目录节点)，我们能够自由的增加、删除znode，在一个znode下增加、删除子znode。唯一与文件系统的不同在于znode是可以存储数据的。
+
+zookeeper命名空间中的znode，兼具文件和目录两种特点。既像文件一样维护者数据、元信息、ACL、时间戳等数据结构，又像目录一样可以作为路径标识的一部分。每个znode由3部分组成：
+
+
+四种类型的znode:
+  PERSISTENT            -- 持久化目录节点
+                           客户端与zookeeper断开连接后，该节点依旧存在
+  PERSISTENT_SEQUENTIAL -- 持久化顺序编号目录节点
+                           客户端与zookeeper断开连接后，该节点依旧存在，只是zookeeper给该节点名称进行顺序编号
+  EPHEMERAL             -- 临时目录节点
+                           客户端与zookeeper断开连接后，该节点被删除
+  EPHEMERAL_SEQUENTIAL  -- 临时顺序编号目录节点
+                           客户端与zookeeper断开连接后，该节点被删除，只是zookeeper给该节点名称进行顺序编号
+
+
+监听通知机制
+=================
+客户端注册监听它关心的目录节点，当目录节点发生变化（数据改变、被删除、子目录节点增加删除）时，zookeeper会通知客户端。                           
+
+
 《从Paxos到Zookeeper分布式一致性原理与实践》
 
 - 初始ZooKeeper

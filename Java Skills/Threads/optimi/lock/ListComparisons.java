@@ -71,4 +71,32 @@ abstract class ListTest extends Tester<List<Integer>>{
 
 class SynchronizedArrayListTest extends ListTest{
 	
+	List<Integer> containerInitializer(){
+
+		return Collections.synchronizedList(
+			new ArrayList<Integer>(
+				new CountingIntegerList(containerSize)
+			)
+		);
+	}
+
+	SynchronizedArrayListTest(int nReaders, int nWriters){
+		super("Synched ArrayList", nReaders, nWriters);
+	}
+
 }
+
+class CopyOnWriteArrayListTest extends ListTest{
+
+	List<Integer> containerInitializer(){
+		return new CopyOnWriteArrayList<Integer>(
+			new CountingIntegerList(containerSize)
+		);
+	}
+
+	CopyOnWriteArrayListTest(int nReaders, int nWriters){
+		super("CopyOnWriteArrayList", nReaders, nWriters);
+	}
+
+}
+
