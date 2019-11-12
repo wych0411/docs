@@ -10,7 +10,7 @@ public class LiftOff implements Runnable{
 	}
 
 	public String status(){
-		return "#" + "(" + (countDown > 0 ? countDown : "Liftoff!") + "),";
+		return "#" + id + "(" + (countDown > 0 ? countDown : "Liftoff!") + "),";
 	}
 
 	public void run(){
