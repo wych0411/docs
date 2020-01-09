@@ -1,0 +1,11 @@
+S.O.L.I.D是面向对象设计和编程（OOD & OOP）中几个重要编码原则（Programming Priciple）的首字母缩写。
+- SRP
+  单一责任原则
+- OCP
+  开放封闭原则
+- LSP
+  里氏替换原则
+- ISP
+  接口分离原则
+- DIP
+  依赖倒置原则
