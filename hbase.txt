@@ -3,3 +3,6 @@ https://www.csdn.net/gather_29/MtTaEgzsMzE3OC1ibG9n.html
 
 redis hash：
 https://www.jianshu.com/p/28d4198085c8
+
+HBase数据库入门教程
+http://c.biancheng.net/hbase/
