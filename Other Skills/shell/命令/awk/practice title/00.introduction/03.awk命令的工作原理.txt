@@ -1,0 +1,12 @@
+awk 'BEGIN{ commands } pattern{ commands } END{ commands }'
+
+第一步：
+    在awk开始从输入流中读取行之前，BEGIN{ commands }语句块中的语句被执行；
+	这是一个可选的语句块，比如变量初始化、打印输出表格的表头等语句通常可以写在BEGIN语句块中。
+	
+第二步：
+    从文件或标准输入(stdin)读取一行，然后执行pattern{ commands }语句块，它逐行扫描文件，从第一行到最后一行，重复这个过程，直到文件全部被读取完毕。
+	pattern{ commands }语句块中的通用命令是最重要的部分，它也是可选的。如果没有提供pattern语句块，则默认执行{ print }（不带参数的print命令）,即打印每一个读取到的行。
+	
+第三步：
+    在awk从输入流中读取完所有的行之后，执行END{ commands }语句块，比如打印所有行的分析结果这类信息汇总都是在END语句块中完成，它也是一个可选语句块。

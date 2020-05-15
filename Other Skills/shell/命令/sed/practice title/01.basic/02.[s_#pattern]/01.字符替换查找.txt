@@ -1,0 +1,35 @@
+替换操作: s命令
+
+命令格式：s///
+  "/"代表模式定界符，也可以将"/"替换为任意的定界符，将其写在s命令后并保证模式以指定的定界符结尾。
+  如果模式字符中含有定界符，需要使用\对其进行转义。
+  
+  example no.1:
+  - #BASH> echo -e 'line 1\nline 2\nline 3' | sed -n 's/1/n/p'
+  
+  - line n
+  
+  example no.2:
+  - #BASH> echo -e 'line 1\nline 2\nline 3' | sed -n 's:1:n:p'
+  
+  - line n
+  
+  example no.3:
+  - #BASH> echo -e 'line 1\nline 2\nline 3' | sed -n 's?1?n?p'
+  
+  - line n
+  
+title:
+  s命令用于替换文本中的字符串
+  
+summary:
+  s命令用于替换文本中的字符串为指定的字符串
+  
+example no.1:
+- #BASH> echo -e 'line 1\nline 2\nline 3' | sed 's/line/new string/'
+
+- new string 1
+- new string 2
+- new string 3
+  
+  

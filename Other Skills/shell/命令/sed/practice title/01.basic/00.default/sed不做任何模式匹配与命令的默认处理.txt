@@ -1,0 +1,12 @@
+title:
+	sed不做任何模式匹配与命令的默认处理
+	
+summary:
+	sed命令不指定任何模式匹配及命令时将原样输入文本的每一行
+	
+example no.1:
+  - #BASH> echo -e 'line 1\nline 2\nline 3'|sed ''
+  
+  - line 1	
+  - line 2	
+  - line 3	

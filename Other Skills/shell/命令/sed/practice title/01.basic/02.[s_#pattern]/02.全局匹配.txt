@@ -1,0 +1,15 @@
+title:
+  替换标记g
+  
+summary:
+  替换标记g表示行内全面替换。不加g只能替换每行开始的第一个匹配
+  
+example no.1:
+- #BASH> echo 'sksksksks' | sed 's/sk/SK/'
+
+- SKsksksks
+
+example no.2:
+- #BASH> echo 'sksksksks' | sed 's/sk/SK/g'
+
+- SKSKSKSKs

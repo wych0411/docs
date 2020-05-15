@@ -1,0 +1,20 @@
+title:
+  已匹配字符串标记&
+  
+summary:
+  &标记表示对匹配到的内容的引用。
+  
+example no.1:
+- #BASH> echo 'love is love' | sed 's/love/& you/'
+
+- love you is love
+
+example no.2:
+- #BASH> echo 'love is love' | sed 's/love/& you/g'
+
+- love you is love you
+
+example no.3:
+- #BASH> echo 'love is love' | sed 's/love/& you/2'
+
+- love is love you
