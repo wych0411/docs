@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd" xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <profiles>
+    <profile>
+      <repositories>
+	 <repository>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+          <id>central-local</id>
+          <name>libs-releases-local</name>
+          <url>http://artifactory.jd.com/libs-releases</url>
+        </repository>
+        <repository>
+          <snapshots />
+          <id>snapshots</id>
+          <name>libs-snapshots</name>
+          <url>http://artifactory.jd.com/libs-snapshots</url>
+        </repository>
+      </repositories>
+      <pluginRepositories>
+        <pluginRepository>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+          <id>central</id>
+          <name>plugins-releases</name>
+          <url>http://artifactory.jd.com/plugins-releases</url>
+        </pluginRepository>
+        <pluginRepository>
+          <snapshots />
+          <id>snapshots</id>
+          <name>plugins-snapshots</name>
+          <url>http://artifactory.jd.com/plugins-snapshots</url>
+        </pluginRepository>
+        <pluginRepository>
+          <id>dtrott</id>
+          <url>http://maven.davidtrott.com/repository</url>
+        </pluginRepository> 
+      </pluginRepositories>
+      <id>artifactory</id>
+    </profile>
+  </profiles>
+  <activeProfiles>
+    <activeProfile>artifactory</activeProfile>
+  </activeProfiles>
+  <servers>
+        <server>
+            <id>jd-central</id>
+            <username>yuwenhu</username>
+            <password>yuwenhu@jd.com0605</password>
+        </server>
+        <server>
+            <id>jd-snapshots</id>
+            <username>yuwenhu</username>
+            <password>yuwenhu@jd.com0605</password>
+        </server>
+    </servers>
+</settings>
+
